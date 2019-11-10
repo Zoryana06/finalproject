@@ -35,3 +35,30 @@ class BasePage():
 			alert.accept()
 		except NoAlertPresentException:
 			print("No second alert presented")
+
+	def should_be_product_name(self):
+		self.name = name
+
+	def get_product_name(self):
+		try:
+			print(f"\nProduct name is '{self.name}'")
+		except NoSuchElementException:
+			print("\nName is absent")
+
+	def should_be_basket_and_product_cost(self):
+		self.cost = cost
+
+	def get_basket_and_product_cost(self):
+		try:
+			print(f"Product cost is '{self.cost}'")
+		except NoSuchElementException:
+			print("Cost is absent")
+
+	def should_be_name_equal_title(self):
+		self.title = title
+
+	def get_title(self):
+		try:
+			print(f"Product name '{self.name}' is equal title '{self.title}'\n")
+		except NoSuchElementException:
+			print("Product name is not equal title\n")
