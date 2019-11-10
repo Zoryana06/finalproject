@@ -17,3 +17,7 @@ class ProductPageLocators():
 class BasePageLocators():
 	LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 	LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+	VIEW_BASKET = (By.XPATH, "//a[contains(text(), 'View basket')]")
+
+class BasketPageLocators():
+	EMPTY_BASKET = (By.CSS_SELECTOR, "#content_inner > p")
