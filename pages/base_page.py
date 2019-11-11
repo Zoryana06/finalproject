@@ -19,6 +19,8 @@ class BasePage():
 		self.url = url
 		self.browser.implicitly_wait(timeout)
 
+#-------------------------------should be purchased product------------------------------------------
+
 	def is_element_present(self, how, what):
 		try:
 			self.browser.find_element(how, what)
@@ -67,6 +69,8 @@ class BasePage():
 		except NoSuchElementException:
 			print("Product name is not equal title\n")
 
+#------------------------------------negative checks---------------------------------------------------------
+
 	def is_not_element_present(self, how, what, timeout=4):
 		try:
 			WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
@@ -81,6 +85,8 @@ class BasePage():
 			return False
 		return True
 
+#--------------------------------login link and page-----------------------------------------------------------
+
 	def should_be_login_link(self):
 		assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
@@ -88,9 +94,17 @@ class BasePage():
 		link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
 		link.click()
 
+#-------------------------------basket button and basket page-------------------------------------------------
+
 	def should_be_view_basket_button(self):
 		assert self.is_element_present(*BasePageLocators.VIEW_BASKET), "View basket button is not presented"
 
 	def go_to_basket(self):
 		view_basket = self.browser.find_element(*BasePageLocators.VIEW_BASKET)
 		view_basket.click()
+
+#---------------------------------register user----------------------------------------------------------------
+
+	def should_be_authorized_user(self):
+		assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                 " probably unauthorised user"
